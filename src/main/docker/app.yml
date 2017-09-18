@@ -1,0 +1,14 @@
+version: '2'
+services:
+    creditevaluation-app:
+        image: creditevaluation
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod,swagger
+            - SPRING_DATASOURCE_URL=jdbc:mysql://creditevaluation-mysql:3306/creditevaluation?useUnicode=true&characterEncoding=utf8&useSSL=false
+            - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
+        ports:
+            - 9999:9999
+    creditevaluation-mysql:
+        extends:
+            file: mysql.yml
+            service: creditevaluation-mysql
